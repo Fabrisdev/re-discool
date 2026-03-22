@@ -1,7 +1,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { app, BrowserWindow } from "electron";
-import { registerBotApis } from "./bot";
+import { registerBotApis } from "./api";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
