@@ -1,14 +1,14 @@
 import "./globals.css";
+import { ServerIcon } from "./guilds/GuildIcon";
 
-const servers = await window.api.servers();
+const guilds = await window.api.guilds();
 
-console.log(servers);
 function App() {
 	return (
 		<main className="bg-[#121214] h-svh w-svw">
-			<ul>
-				{servers.map((server) => (
-					<li key={server.id}>{server.name}</li>
+			<ul className="flex flex-col gap-2">
+				{guilds.map((guild) => (
+					<ServerIcon guild={guild} key={guild.id} />
 				))}
 			</ul>
 		</main>
