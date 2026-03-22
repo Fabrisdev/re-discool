@@ -1,29 +1,16 @@
-import { useState } from "react";
 import "./globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { GuildChannelsSidebar } from "./guilds/GuildChannels";
-import { ServerIcon } from "./guilds/GuildIcon";
+import { GuildChannelsSidebar } from "./guilds/GuildChannelsSidebar";
+import { GuildIconSidebar } from "./guilds/GuildIconSidebar";
 
-const guilds = await window.api.guilds();
 const queryClient = new QueryClient();
 
 function App() {
-	const [currentGuild, setCurrentGuild] = useState<string | null>(null);
 	return (
-		<main className="bg-[#121214] h-svh w-svw">
+		<main className="bg-[#121214] min-h-svh w-svw flex gap-2">
 			<QueryClientProvider client={queryClient}>
-				<ul className="flex flex-col gap-2">
-					{guilds.map((guild) => (
-						<ServerIcon
-							guild={guild}
-							key={guild.id}
-							onSelect={(guildId) => setCurrentGuild(guildId)}
-						/>
-					))}
-				</ul>
-				{currentGuild !== null && (
-					<GuildChannelsSidebar guildId={currentGuild} />
-				)}
+				<GuildIconSidebar />
+				<GuildChannelsSidebar />
 			</QueryClientProvider>
 		</main>
 	);

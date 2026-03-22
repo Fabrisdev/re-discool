@@ -1,25 +1,32 @@
 import type { Guild } from "selfbot-discord";
+import { useGuildStore } from "../stores/guilds";
 
 type Props = {
 	guild: Guild;
-	onSelect: (guildId: string) => void;
 };
 
-export function ServerIcon({ guild, onSelect }: Props) {
+export function ServerIcon({ guild }: Props) {
 	const iconUrl = `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png`;
 	const firstLettersInName = guild.name.split(" ").map((word) => word[0]);
+	const setCurrentGuild = useGuildStore((state) => state.setCurrentGuild);
+	const currentGuild = useGuildStore((state) => state.currentGuild);
 	return (
-		<button type="button" onClick={() => onSelect(guild.id)}>
+		<button
+			type="button"
+			onClick={() => setCurrentGuild(guild.id)}
+			className="relative cursor-pointer"
+		>
+			{currentGuild === guild.id && (
+				<div className="w-2 h-10 bg-white absolute -left-4 rounded-2xl"></div>
+			)}
 			{guild.icon ? (
 				<img
 					src={iconUrl}
 					alt={`${guild.name}'s icon`}
-					width={40}
-					height={40}
-					className="rounded-lg"
+					className="size-10 rounded-lg"
 				/>
 			) : (
-				<p className="size-10 bg-[#1d1d1e] flex justify-center items-center rounded-lg">
+				<p className="bg-[#1d1d1e] flex justify-center items-center rounded-lg size-10 text-white">
 					{firstLettersInName}
 				</p>
 			)}
