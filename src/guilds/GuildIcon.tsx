@@ -1,8 +1,8 @@
-import type { Guild } from "selfbot-discord";
+import type { GuildSlice } from "../../electron/api";
 import { useGuildStore } from "../stores/guilds";
 
 type Props = {
-	guild: Guild;
+	guild: GuildSlice;
 };
 
 export function ServerIcon({ guild }: Props) {

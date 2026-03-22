@@ -1,10 +1,10 @@
-import type { Guild, GuildChannel } from "selfbot-discord";
+import type { GuildChannelSlice, GuildSlice } from "../electron/api";
 
 declare global {
 	interface Window {
 		api: {
-			guilds: () => Promise<Guild[]>;
-			channels: (guildId: string) => Promise<GuildChannel[]>;
+			guilds: () => Promise<GuildSlice[]>;
+			channels: (guildId: string) => Promise<GuildChannelSlice[]>;
 		};
 	}
 }
