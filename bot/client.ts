@@ -9,10 +9,3 @@ export const client: Client = new Discord.Client();
 client.on("ready", () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 });
-
-client.on("message", (msg) => {
-	if (msg.author.id === client.user.id) return;
-	if (msg.content === "ping") {
-		msg.reply("pong");
-	}
-});
