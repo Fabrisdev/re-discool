@@ -7,4 +7,9 @@ export async function registerBotApis() {
 	ipcMain.handle("guilds", () => {
 		return client.guilds.array();
 	});
+	ipcMain.handle("channels", (_event, guildId: string) => {
+		const guild = client.guilds.get(guildId);
+		if (guild === undefined) return [];
+		return guild.channels.array();
+	});
 }

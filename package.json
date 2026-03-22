@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.2.2",
+		"@tanstack/react-query": "^5.95.0",
 		"dotenv": "^17.3.1",
 		"erlpack": "^0.1.4",
 		"react": "^18.2.0",
