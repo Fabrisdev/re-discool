@@ -23,7 +23,7 @@ client.on("message", (msg) => {
 
 export async function registerBotApis() {
 	await client.login(token);
-	ipcMain.handle("servers", () => {
+	ipcMain.handle("guilds", () => {
 		return client.guilds.array();
 	});
 }
